@@ -77,3 +77,8 @@ In supported browsers, adds a toolbar button which reads editor content&nbsp;alo
 Adds Ace syntax highlighter to Redactor souce&nbsp;mode.
 
 ![](http://cl.ly/image/3R02103Z3k1v/Screen%20Shot%202015-02-12%20at%205.31.10%20PM.png)
+
+### zoom 
+Adds a keyboard shortcut to enlarge and decrease font size in content area. Use `CTRL +` and `CTRL -`.
+
+![](http://jpdevries.s3.amazonaws.com/temp/Screen%20Shot%202015-02-13%20at%203.02.04%20AM.png)
