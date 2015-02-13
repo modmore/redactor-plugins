@@ -1,0 +1,102 @@
+module.exports = function(grunt) {
+	var initConfig = {
+		pkg: grunt.file.readJSON('package.json'),
+		dirs: {
+            'dist':'./dist/',
+            'src':'./src/'
+		},
+		uglify: {
+			main: {
+				options: {
+					report: 'min'
+				},
+				files: {
+					'<%= dirs.dist %>redactor-plugins.all.min.js': [
+                    '<%= dirs.src %>breadcrumb.js',
+                    '<%= dirs.src %>clips.js',
+                    '<%= dirs.src %>contrast.js',
+                    '<%= dirs.src %>counter.js',
+                    '<%= dirs.src %>download.js',
+                    '<%= dirs.src %>imagepx.js',
+                    '<%= dirs.src %>limiter.js',
+                    '<%= dirs.src %>noprhan.js',
+                    '<%= dirs.src %>replacer.js',
+                    '<%= dirs.src %>speek.js',
+                    '<%= dirs.src %>syntax.js',
+                    '<%= dirs.src %>wym.js',
+                    '<%= dirs.src %>zoom.js'
+                ]
+				}
+			}
+		},
+		watch: { /* trigger tasks on save */
+			options: {
+				livereload: true
+			},
+			js: {
+				files: ['<%= dirs.src %>*.js'],
+				tasks: ['uglify', 'growl:uglify']
+			}
+		},
+		growl: { /* optional growl notifications requires terminal-notifer: gem install terminal-notifier */
+			uglify: {
+				title: "grunt",
+				message: "JavaScript minified."
+			},
+			watch: {
+				title: "grunt",
+				message: "Watching. Grunt has its eye on you."
+			}
+		},
+        jsvalidate: {
+          options:{
+            globals: {},
+            esprimaOptions: {},
+            verbose: false
+          },
+          target:{
+            files:{
+              src:['<%= dirs.src %>*.js']
+            }
+          }
+        }
+	};
+    
+    var plugins = [
+        'breadcrumb',
+        'clips',
+        'contrast',
+        'counter',
+        'download',
+        'imagepx',
+        'limiter',
+        'norphan',
+        'replacer',
+        'speek',
+        'syntax',
+        'wym',
+        'zoom'
+    ];
+    
+    for(var i = 0; i < plugins.length; i++) {
+        initConfig.uglify[plugins[i]] = {
+			options: {
+				report: 'min'
+			},
+			files: {
+			}
+        }
+        initConfig.uglify[plugins[i]].files[('<%= dirs.dist %>' + plugins[i] + '.min.js')] = ('<%= dirs.src %>' + plugins[i] + '.js');
+    }
+
+	grunt.initConfig(initConfig);
+
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-growl');
+    grunt.loadNpmTasks('grunt-jsvalidate');
+
+	grunt.registerTask('default',['growl:watch','watch']);
+	grunt.registerTask('build',['uglify','jsvalidate']);
+    
+};

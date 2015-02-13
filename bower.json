@@ -1,0 +1,24 @@
+{
+  "name": "modmore-redactor-plugins",
+  "description": "",
+  "version": "0.0.0",
+  "license": "OEM",
+  "ignore": [
+      "node_modules",
+      "gruntfile.js",
+      "package.json",
+      "README.md"
+  ],
+  "author": {
+    "name": "modmore",
+    "url": "http://modmore.com"
+  },
+  "homepage": "https://www.modmore.com/extras/redactor/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/modmore/redactor-plugins.git"
+  },
+  "bugs": {
+    "url": "http://github.com/modmore/redactor-plugins/issues"
+  }
+}
