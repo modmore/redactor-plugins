@@ -1,8 +1,8 @@
 {
   "name": "modmore-redactor-plugins",
   "description": "",
-  "version": "0.0.0",
-  "license": "OEM",
+  "version": "1.0.0",
+  "license": "MIT",
   "ignore": [
       "node_modules",
       "gruntfile.js",

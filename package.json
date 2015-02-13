@@ -1,19 +1,19 @@
 {
   "name": "modmore-redactor-plugins",
   "title": "Redactor Plugins by modmore",
-  "version": "0.0.0",
-  "release": "dev1",
+  "version": "1.0.0",
+  "release": "pl",
   "author": "modmore<contact@modmore.com>",
   "description": "Redactor.js plugins by modmore.",
   "contributors": [
     {
-    "name": "JP DeVries",
-    "email": "jp@modmore.com"
+      "name": "JP DeVries",
+      "email": "jp@modmore.com"
     },
     {
       "name": "Mark Hamstra",
       "email": "mark@modmore.com"
-    }
+    },
     {
       "name": "Imperavi",
       "email": "contact@imperavi.com"
@@ -32,6 +32,7 @@
     "grunt-contrib-uglify": "^0.7.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-growl": "^0.1.5",
-    "grunt-jsvalidate": "^0.2.2"
+    "grunt-jsvalidate": "^0.2.2",
+    "grunt-string-replace": "^1.0.0"
   }
 }

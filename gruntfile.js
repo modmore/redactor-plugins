@@ -48,6 +48,23 @@ module.exports = function(grunt) {
 				message: "Watching. Grunt has its eye on you."
 			}
 		},
+        bump: {
+            pkg: {
+                files: [
+                    {src:'./package.json',dest:'./package.json'},
+                    {src:'./bower.json',dest:'./bower.json'}
+                ],
+                options: {
+                    replacements:[{
+						pattern:/"version":\s*"\d.\d.\d"/ig,
+						replacement:'"version": "' + (grunt.option('ver') || '<%= pkg.version %>') + '"'
+                    },{
+						pattern:/"release"\s*:\s*"(.*?)"/ig,
+						replacement:'"release": "' + (grunt.option('rel') || '<%= pkg.release %>') + '"'
+                    }]
+                }
+            }
+        },
         jsvalidate: {
           options:{
             globals: {},
@@ -95,8 +112,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-growl');
     grunt.loadNpmTasks('grunt-jsvalidate');
+    
+    grunt.loadNpmTasks('grunt-string-replace');
+    grunt.renameTask('string-replace','bump');
 
 	grunt.registerTask('default',['growl:watch','watch']);
-	grunt.registerTask('build',['uglify','jsvalidate']);
+	grunt.registerTask('build',['uglify','jsvalidate','bump']);
     
 };
