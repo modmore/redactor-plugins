@@ -33,7 +33,7 @@ if (!RedactorPlugins) var RedactorPlugins = {};
 			},
             handleChange: function(e) {
                 var that = this;
-                var current = this.selection.getBlock();
+                var current = this.selection.getCurrent();
                 var _messageBox = $('#redactor_breadcrumb-' + this.uuid);
                 
                 var cloned = $(current).clone();
