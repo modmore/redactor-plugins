@@ -22,15 +22,15 @@ if(typeof ace === 'undefined') document.write('<script src="' + this.opts.assets
                 });
             
                 this.$element.on("sourceCallback",function(data){ // #janky REQUIRES redactor.js#L2717 hack.
-                    if(!that.opts.visual) {
-                        var _h = that.$textarea.height();
-                        that.$textarea.hide();
-                        editor.setValue(that.tabifier.get(that.$textarea.val()));
-                        _p.show().height(_h);  
-                        editor.resize();
-                    } else {
-                        _p.hide();
-                    }
+                    var _h = that.$textarea.height();
+                    that.$textarea.hide();
+                    editor.setValue(that.tabifier.get(that.$textarea.val()));
+                    _p.show().height(_h);  
+                    editor.resize();
+                });
+                
+                this.$element.on("visualCallback",function(data){
+                    $(document.getElementById(('redactor__modx-code-pretty-content' + that.uuid))).hide();
                 });
             
                 /*
