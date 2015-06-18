@@ -10,7 +10,7 @@ if (!RedactorPlugins) var RedactorPlugins = {};
                 var that = this;
                 if(typeof ace === 'undefined') {
                     offlineMode = true;
-                    $.getScript(that.opts.assetsUrl + 'lib/ace/ace.js', function(){
+                    $.getScript(that.opts.aceOfflineSource, function(){
                         that.syntax.handleLoaded();
                     });
                 } else {
