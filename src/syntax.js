@@ -57,6 +57,9 @@ if (!RedactorPlugins) var RedactorPlugins = {};
                     that.insert.set(editor.getValue(), false);
                     editorDOM.hide();
                 });
+                editor.on('change',function(e){
+                    that.insert.set(editor.getValue(), false);
+                });
                 
                 if(that.opts.aceFontSize !== undefined) editorDOM.css({fontSize:that.opts.aceFontSize});
             }
