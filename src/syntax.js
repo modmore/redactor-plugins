@@ -54,6 +54,7 @@ if (!RedactorPlugins) var RedactorPlugins = {};
                 
                 var editorDOM = $(document.getElementById(('redactor__modx-code-pretty-content' + that.uuid)));
                 that.$element.on("visualCallback",function(data){
+                    that.insert.set(editor.getValue(), false);
                     editorDOM.hide();
                 });
                 
