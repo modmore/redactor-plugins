@@ -19,7 +19,7 @@ if (!RedactorPlugins) var RedactorPlugins = {};
             },
             handleLoaded: function(){
                 var that = this;
-                that.$textarea.after('<div class="redactor__modx-code-pretty-content" rows="4" style="display:none"></div>');
+                that.$textarea.after('<div class="redactor__modx-code-pretty-content" rows="4" style="display:none"></div>'); // not fun to have to do this http://stackoverflow.com/questions/6440439/how-do-i-make-a-textarea-an-ace-editor#comment9444773_7478430
                 var _p = that.$textarea.parent().children('div.redactor__modx-code-pretty-content').attr('id','redactor__modx-code-pretty-content' + that.uuid);
                 
                 if(offlineMode) {
@@ -31,6 +31,7 @@ if (!RedactorPlugins) var RedactorPlugins = {};
                 var editor = ace.edit('redactor__modx-code-pretty-content' + that.uuid);
                 editor.setTheme(that.opts.aceTheme || "ace/theme/chrome");
                 editor.getSession().setMode(that.opts.aceMode || "ace/mode/html");
+                editor.getSession().setUseWorker(that.opts.useWorkers || false);
                 editor.setValue(that.tabifier.get(that.$textarea.val())); 
                 if(that.opts.aceUseSoftTabs !== undefined) editor.getSession().setUseSoftTabs(that.opts.aceUseSoftTabs);
                 if(that.opts.aceTabSize !== undefined && parseInt(that.opts.aceTabSize)) editor.getSession().setTabSize(parseInt(that.opts.aceTabSize));
@@ -58,7 +59,7 @@ if (!RedactorPlugins) var RedactorPlugins = {};
                     editorDOM.hide();
                 });
                 editor.on('change',function(e){
-                    that.insert.set(editor.getValue(), false);
+                    that.$textarea.val(editor.getValue());
                 });
                 
                 if(that.opts.aceFontSize !== undefined) editorDOM.css({fontSize:that.opts.aceFontSize});
