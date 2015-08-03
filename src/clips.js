@@ -49,7 +49,14 @@ if (!RedactorPlugins) var RedactorPlugins = {};
 			init: function()
 			{
                 if(!this.opts.clipsJson) return;
-                this.clips.json = $.parseJSON(this.opts.clipsJson) || null;
+                if(typeof(this.opts.clipsJson) === 'string') {
+                    try {
+                        this.clips.json = $.parseJSON(this.opts.clipsJson);
+                    } catch (e) {
+                        return false;
+                    } 
+                }
+                if(!this.clips.json) this.clips.json = this.opts.clipsJson;
                 
 				var button = this.button.addAfter('link','clips', 'Clips');
                 button.addClass('re-icon re-clips')
