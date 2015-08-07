@@ -44,9 +44,16 @@ if (!RedactorPlugins) var RedactorPlugins = {};
                 var _style = _img.attr('style') || '';
                 var _id = $('#image-edit-dimensions').addClass('scalable');
                 var _imageTouched, _listenersAdded = false;
-                
-                if(_img.prop("style")['width']) _imageW.val(_img.prop("style")['width']);
-                if(_img.prop("style")['height']) _imageH.val(_img.prop("style")['height']);
+                var _imgStyle = _img.prop('style');
+
+                if(_imgStyle) {
+                  if (_imgStyle.width) {
+                    _imageW.val(_imgStyle.width);
+                  }
+                  if (_imgStyle.height) {
+                    _imageH.val(_imgStyle.height);
+                  }
+                }
 
                 $.each([_imageW,_imageH],function(index,value){
                     $(this).on('change keyup',function(e){
