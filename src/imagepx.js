@@ -22,7 +22,9 @@ if (!RedactorPlugins) var RedactorPlugins = {};
                 var _imageW =  $(document.createElement('input')).attr('type','text').attr('min','0').attr('maxlength','8').attr('pattern','\d+(px|%|)').attr('data-redactor-deminsion-axis','x').attr('name','redactor-imageEdit-image-width' ).attr('id','redactor-imageEdit-image-width');
                 var _imageH =  $(document.createElement('input')).attr('type','text').attr('min','0').attr('maxlength','8').attr('pattern','\d+(px|%|)').attr('data-redactor-deminsion-axis','y').attr('name','redactor-imageEdit-image-height').attr('id','redactor-imageEdit-image-height');
                 var _preview = $(document.createElement('input')).attr('disabled','disabled').attr('type','checkbox').attr('id','redactor-imageEdit-image-preview');
-                
+                var _previewLabel = $(document.createElement('label')).attr('for','redactor-imageEdit-image-preview').text(this.opts.curLang.previewDimensions || 'Preview Dimensions');
+                // input should prepend in label, <label><input>...</label>
+                _previewLabel.prepend(_preview);
                 _c.append([
                     $(document.createElement('div')).addClass('option').addClass('redactor-imageEdit-image-width').append(
                         $(document.createElement('label')).attr('for','redactor-imageEdit-image-width').text(this.opts.curLang.width || 'Width'),
@@ -32,11 +34,8 @@ if (!RedactorPlugins) var RedactorPlugins = {};
                         $(document.createElement('label')).attr('for','redactor-imageEdit-image-height').text(this.opts.curLang.height || 'Height'),
                         _imageH
                     ),
-                    
-                    $(document.createElement('div')).addClass('option').addClass('redactor-imageEdit-image-preview').append(
-                        _preview,
-                        $(document.createElement('label')).attr('for','redactor-imageEdit-image-preview').text(this.opts.curLang.previewDimensions || 'Preview Dimensions')
-                    )
+
+                    $(document.createElement('div')).addClass('option').addClass('redactor-imageEdit-image-preview').append(_previewLabel)
                 ]);
                 
                 var _img = $('#redactor-image-box').children('img');
@@ -45,9 +44,16 @@ if (!RedactorPlugins) var RedactorPlugins = {};
                 var _style = _img.attr('style') || '';
                 var _id = $('#image-edit-dimensions').addClass('scalable');
                 var _imageTouched, _listenersAdded = false;
-                
-                if(_img.prop("style")['width']) _imageW.val(_img.prop("style")['width']);
-                if(_img.prop("style")['height']) _imageH.val(_img.prop("style")['height']);
+                var _imgStyle = _img.prop('style');
+
+                if(_imgStyle) {
+                  if (_imgStyle.width) {
+                    _imageW.val(_imgStyle.width);
+                  }
+                  if (_imgStyle.height) {
+                    _imageH.val(_imgStyle.height);
+                  }
+                }
 
                 $.each([_imageW,_imageH],function(index,value){
                     $(this).on('change keyup',function(e){
