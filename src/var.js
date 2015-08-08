@@ -1,1 +1,0 @@
-var REDACTOR_PLUGINS_ALL = true;

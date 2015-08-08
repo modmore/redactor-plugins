@@ -5,6 +5,29 @@ module.exports = function(grunt) {
             'dist':'./dist/',
             'src':'./src/'
 		},
+        concat: {
+          options: {
+            separator: grunt.util.linefeed,
+          },
+          dist: {
+            src: [
+                '<%= dirs.src %>breadcrumb.js',
+                '<%= dirs.src %>clips.js',
+                '<%= dirs.src %>contrast.js',
+                '<%= dirs.src %>counter.js',
+                '<%= dirs.src %>download.js',
+                '<%= dirs.src %>imagepx.js',
+                '<%= dirs.src %>limiter.js',
+                '<%= dirs.src %>noprhan.js',
+                '<%= dirs.src %>replacer.js',
+                '<%= dirs.src %>speek.js',
+                '<%= dirs.src %>syntax.js',
+                '<%= dirs.src %>wym.js',
+                '<%= dirs.src %>zoom.js'
+            ],
+            dest: '<%= dirs.dist %>redactor-plugins.all.js',
+          },
+        },
 		uglify: {
 			main: {
 				options: {
@@ -12,20 +35,7 @@ module.exports = function(grunt) {
 				},
 				files: {
 					'<%= dirs.dist %>redactor-plugins.all.min.js': [
-                    '<%= dirs.src %>breadcrumb.js',
-                    '<%= dirs.src %>clips.js',
-                    '<%= dirs.src %>contrast.js',
-                    '<%= dirs.src %>counter.js',
-                    '<%= dirs.src %>download.js',
-                    '<%= dirs.src %>imagepx.js',
-                    '<%= dirs.src %>limiter.js',
-                    '<%= dirs.src %>noprhan.js',
-                    '<%= dirs.src %>replacer.js',
-                    '<%= dirs.src %>speek.js',
-                    '<%= dirs.src %>syntax.js',
-                    '<%= dirs.src %>wym.js',
-                    '<%= dirs.src %>zoom.js',
-                    '<%= dirs.src %>var.js'
+                        '<%= dirs.dist %>redactor-plugins.all.js'
                 ]
 				}
 			}
@@ -110,6 +120,7 @@ module.exports = function(grunt) {
 	grunt.initConfig(initConfig);
 
 	grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-growl');
     grunt.loadNpmTasks('grunt-jsvalidate');
@@ -118,6 +129,6 @@ module.exports = function(grunt) {
     grunt.renameTask('string-replace','bump');
 
 	grunt.registerTask('default',['growl:watch','watch']);
-	grunt.registerTask('build',['uglify','jsvalidate','bump']);
+	grunt.registerTask('build',['concat','uglify','jsvalidate','bump']);
     
 };
