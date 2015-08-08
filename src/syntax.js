@@ -8,6 +8,8 @@ if (!RedactorPlugins) var RedactorPlugins = {};
         return {
             init: function() {
                 var that = this;
+                if(that.opts.aceLoaded === undefined) that.opts.aceLoaded = false;
+                if(that.opts.aceLoaded) return;
                 if(typeof ace === 'undefined') {
                     offlineMode = true;
                     $.getScript(that.opts.aceOfflineSource, function(){
@@ -63,6 +65,7 @@ if (!RedactorPlugins) var RedactorPlugins = {};
                 });
                 
                 if(that.opts.aceFontSize !== undefined) editorDOM.css({fontSize:that.opts.aceFontSize});
+                that.opts.aceLoaded = true;
             }
         };
 	};
