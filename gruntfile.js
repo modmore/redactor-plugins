@@ -24,7 +24,8 @@ module.exports = function(grunt) {
                     '<%= dirs.src %>speek.js',
                     '<%= dirs.src %>syntax.js',
                     '<%= dirs.src %>wym.js',
-                    '<%= dirs.src %>zoom.js'
+                    '<%= dirs.src %>zoom.js',
+                    '<%= dirs.src %>var.js'
                 ]
 				}
 			}
