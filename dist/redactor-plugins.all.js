@@ -353,6 +353,7 @@ if (!RedactorPlugins) var RedactorPlugins = {};
 		return {
 			init: function()
 			{
+                var that = this;
                 this.modal.addCallback('imageEdit', $.proxy(this.imagepx.imageEdit, this));
                 if(that.opts.showDimensionsOnResize !== false) {
                     that.$element.on("moveResizeCallback",function(e,data){ // #janky REQUIRES redactor.js#moveResize hack.
