@@ -66,6 +66,10 @@ if (!RedactorPlugins) var RedactorPlugins = {};
                 
 				this.modal.close();
 				this.selection.restore();
+                
+                function replaceAll(find, replace, str, flags) {
+                  return str.replace((find instanceof RegExp) ? find : new RegExp(find, flags), replace);
+                }
             }
 		};
 	};

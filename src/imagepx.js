@@ -8,6 +8,23 @@ if (!RedactorPlugins) var RedactorPlugins = {};
 			init: function()
 			{
                 this.modal.addCallback('imageEdit', $.proxy(this.imagepx.imageEdit, this));
+                if(that.opts.showDimensionsOnResize !== false) {
+                    that.$element.on("moveResizeCallback",function(e,data){ // #janky REQUIRES redactor.js#moveResize hack.
+                        var p = data.el.el.parent();
+                    
+                        var message = data.w + 'x' + data.h;
+                    
+                        if(p.find('.dimensions')[0]) {
+                            p.find('.dimensions').html(message)
+                        } else {
+                            p.append((function(){
+                                var d = $('<p class="dimensions" />');
+                                d.html(message)
+                                return d;
+                            })());
+                        }
+                    });
+                }
 			},
             imageEdit: function()
             {
