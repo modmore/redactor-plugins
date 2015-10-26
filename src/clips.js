@@ -2,50 +2,9 @@ if (!RedactorPlugins) var RedactorPlugins = {};
 
 (function($)
 {
-    var $el;
 	RedactorPlugins.clips = function()
 	{
 		return {
-            json: null,
-            tags: [],
-            getTemplate: function(){
-                var that = this;
-                var _clips = this.clips.json;
-                
-                function unique(array){
-                    return array.filter(function(el, index, arr) {
-                        return index === arr.indexOf(el);
-                    });
-                }
-                
-                var _t = $(document.createElement("section")).attr('id','redactor-modal-clips').append([
-                    $(document.createElement('select')).hide().append(
-                        $(document.createElement('option')).attr('value', '').text('All')
-                    ),
-                    $(document.createElement('ul')).addClass('redactor_clips_box')
-                ]);
-                
-                if(_clips && _clips.length) {
-                    var _clipsCount = $('.clipsmodal').size();
-                    var _modalId = "clipsmodal-" + _clipsCount;
-                    _t.attr('id',_modalId);
-                    var _tags = that.clips.tags;
-                    $.each(_clips, function(i, item) {
-                        var _li = $('<li class="redactor_clip_item"><a href="#" class="redactor_clip_link"' + ((item.advanced == 1) ? ' data-advanced="1"' : '') + '></a><div class="redactor_clip" style="display:none"></div></li>');
-                        _li.children('a').html(item.title);
-                        _li.children('.redactor_clip').html(item.clip);
-
-                        if(item.tags) {
-                            _li.addClass(item.tags);
-                            that.clips.tags = unique($.merge(that.clips.tags,item.tags.split(" "))) 
-                        }
-                        
-                        _t.find('.redactor_clips_box').append(_li);
-                    });
-                }
-                
-                return $(_t)[0].outerHTML;
-            },
 			init: function()
 			{
                 if(!this.opts.clipsJson) return;
@@ -58,62 +17,58 @@ if (!RedactorPlugins) var RedactorPlugins = {};
                 }
                 if(!this.clips.json) this.clips.json = this.opts.clipsJson;
                 
-				var button = this.button.addAfter('link','clips', 'Clips');
-                button.addClass('re-icon re-clips')
+                var items = this.clips.json;
+
+				this.clips.template = $('<ul id="redactor-modal-list">');
+
+				for (var i = 0; i < items.length; i++)
+				{
+					var li = $('<li>');
+					var a = $('<a href="#" class="redactor-clip-link">').text(items[i].title);
+					var div = $('<div class="redactor-clip">').hide().html(items[i].clip);
+                    
+                    if(items[i].advanced !== undefined && items[i].advanced !== 'false' && items[i].advanced !== false) $(div).attr('data-advanced','1');
+
+					li.append(a);
+					li.append(div);
+					this.clips.template.append(li);
+				}
+
+				this.modal.addTemplate('clips', '<section>' + this.utils.getOuterHtml(this.clips.template) + '</section>');
+
+				var button = this.button.add('clips', 'Clips');
 				this.button.addCallback(button, this.clips.show);
+
 			},
-            filter: function(tags) {
-                if(tags.trim()) {
-                    tags = tags.trim().split(' ');
-                    $('#redactor-modal').find('.redactor_clip_item').hide();
-                    for(var i = 0; i < tags.length; i++) {
-                        var _tag = tags[i].trim();
-                        if(_tag) $('#redactor-modal').find('.redactor_clip_item.' + _tag).show();
-                    }
-                } else {
-                    $('#redactor-modal').find('.redactor_clip_item').show();
-                }
-            },
-            show: function() {
-                var that = this;
-                
-                this.modal.addTemplate('clips', this.clips.getTemplate());
-                this.modal.load('clips', this.lang.get('clips') || 'Clips', 300);
-                this.modal.createCancelButton();
-                
+			show: function()
+			{
+				this.modal.load('clips', 'Insert Clips', 400);
+
+				this.modal.createCancelButton();
+
+				$('#redactor-modal-list').find('.redactor-clip-link').each($.proxy(this.clips.load, this));
+
 				this.selection.save();
 				this.modal.show();
-                
-                var _tags = that.clips.tags;
-                
-                if(_tags.length) {
-                    $('#redactor-modal').find('select').show();
-                    
-                    for(var i = 0; i < _tags.length; i++) {
-                        $('#redactor-modal').find('select').append(
-                            $(document.createElement('option')).attr('value', _tags[i]).text(_tags[i])
-                        );
-                    }
-                }
-                
-                $('#redactor-modal').find('select').on('change',function(){
-                    that.clips.filter($(this).find('option:selected').val().trim());
-                })
-                
-                $('#redactor-modal').find('.redactor_clips_box a').on('click',$.proxy(this.clips.clipClicked, this));
-            },
-            clipClicked: function(e) {
-                this.clips.insertClip($(e.target).next().html(),$(e.target).data('advanced') !== undefined);
-            },
-            insertClip: function(html,advanced) {
-                this.insert.html(html, !advanced);
-                
-                this.modal.close();
-                this.selection.restore();
+			},
+			load: function(i,s)
+			{
+                $(s).addClass('loaded');
+				$(s).on('click', $.proxy(function(e)
+				{
+					e.preventDefault();
+					this.clips.insert($(s).next().html(),$(s).next().attr('data-advanced') == '1');
 
-                this.code.sync();
-                this.observe.load();                
-            }
+				}, this));
+			},
+			insert: function(html,advanced)
+			{
+				this.selection.restore();
+                if(advanced) this.insert.htmlWithoutClean(html);
+                else this.insert.html(html,true);
+				this.modal.close();
+				this.observe.load();
+			}
 		};
 	};
 })(jQuery);
