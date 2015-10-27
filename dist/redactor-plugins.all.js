@@ -169,13 +169,11 @@ if (!RedactorPlugins) var RedactorPlugins = {};
                 this.clips.insertClip($(e.target).next().html(),$(e.target).data('advanced') !== undefined);
             },
             insertClip: function(html,advanced) {
-                this.insert.html(html, !advanced);
-                
-                this.modal.close();
-                this.selection.restore();
-
-                this.code.sync();
-                this.observe.load();                
+				this.selection.restore();
+                if(advanced) this.insert.htmlWithoutClean(html);
+                else this.insert.html(html,true);
+				this.modal.close();
+				this.observe.load();      
             }
 		};
 	};
