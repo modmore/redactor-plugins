@@ -52,6 +52,11 @@ Adds options to set and preview image dimensions in the Image Edit modal&nbsp;wi
 
 ![](http://cl.ly/image/3E0p0s2g0p2n/Screen%20Shot%202015-02-12%20at%205.37.19%20PM.png)
 
+### imageurl
+Adds a tab to the Insert Image modal window that allows images to be inserted directly form a URL.
+
+![](http://j4p.us/image/2u3W3G1N342G/Screen%20Shot%202015-12-06%20at%2011.05.47%20AM.png)
+
 ### norphan
 Attempts to prevent orphans by replacing the last space between words of block elements with a non-breaking&nbsp;space.
 

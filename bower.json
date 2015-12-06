@@ -1,7 +1,7 @@
 {
   "name": "modmore-redactor-plugins",
   "description": "",
-  "version": "1.0.13",
+  "version": "1.1.0",
   "license": "MIT",
   "ignore": [
       "node_modules",
