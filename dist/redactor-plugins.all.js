@@ -170,6 +170,7 @@ if (!RedactorPlugins) var RedactorPlugins = {};
             },
             insertClip: function(html,advanced) {
 				this.selection.restore();
+				this.clean.isSingleLine(html);
                 if(advanced) this.insert.htmlWithoutClean(html);
                 else this.insert.html(html,true);
 				this.modal.close();
