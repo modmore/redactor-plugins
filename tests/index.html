@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Redactor</title>
+        <meta charset="utf-8">
+
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+        <!-- Redactor is here -->
+	    <link rel="stylesheet" href="./redactor/redactor.css" />
+	    <script src="./redactor/redactor.js"></script>
+      <script src="../src/imagepx.js"></script>
+      <script src="./redactor/plugins/imperavi/imagemanager.js"></script>
+
+      <style type="text/css">
+        section.dimension::after {
+          clear: both;
+          content: "";
+          display: table;
+        }
+        section.dimension > div {
+          float:left;
+        }
+        section.dimension > div:last-of-type {
+          float:right;
+        }
+      </style>
+
+        <script type="text/javascript">
+        $(function()
+        {
+            $('#content').redactor({
+	            focus: true,
+              imageUpload: '/upload.php',
+              imageManagerJson: '/images/images.json',
+              plugins: ['imagemanager','imagepx']
+            });
+        });
+        </script>
+    </head>
+    <body style="margin: 0;">
+    	<div style="width: 70%; margin: auto; padding: 50px;">
+            <textarea id="content" name="content">
+            <h2>Hello and Welcome</h2>
+            <img src="http://j4p.us/1D0D2M3E1t0z/Screen%20Shot%202016-05-05%20at%207.19.43%20PM.png">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </textarea>
+    	</div>
+    </body>
+</html>
