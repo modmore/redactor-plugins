@@ -30,6 +30,9 @@
 						}
 					})());
 
+					if($(that.observe.image).attr('width')) $('section.dimension input[name="width"]').val($(that.observe.image).attr('width'));
+					if($(that.observe.image).attr('height')) $('section.dimension input[name="height"]').val($(that.observe.image).attr('height'));
+
 					$('section.dimension input[type="number"]').each(function(){
 						$(this).on('change keyup',function(e){
 							switch(e.target.name) {
