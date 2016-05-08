@@ -38,24 +38,24 @@
 	};
 })(jQuery);
 
-if (!RedactorPlugins) var RedactorPlugins = {};
-
 (function($)
 {
-	RedactorPlugins.contrast = function()
-	{
+	$.Redactor.prototype.contrast = function() {
 		return {
 			init: function() {
-                $.extend(this.opts.shortcuts, {
-                    'f5': {func:'contrast.toggle',params:[]}
-                });
+        var that = this;
+				$.extend(this.opts.shortcuts, {
+						'f5': {func:'contrast.toggle',params:[]}
+				});
 			},
-            toggle: function() {
-                 this.$editor.toggleClass('redactor-editor_contrast');
-            }
+			toggle: function() {
+					console.log('contrast toggle');
+					 this.core.editor().toggleClass('redactor-editor_contrast');
+			}
 		};
 	};
 })(jQuery);
+
 if (!RedactorPlugins) var RedactorPlugins = {};
 
 (function($)
