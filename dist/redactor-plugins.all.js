@@ -127,53 +127,48 @@
 	};
 })(jQuery);
 
-if (!RedactorPlugins) var RedactorPlugins = {};
-
 (function($)
 {
-	RedactorPlugins.imageurl = function()
-	{
+	$.Redactor.prototype.imageurl = function() {
 		return {
+			'url-tab' : String()
+			+ '<form id="insert-image-form" class="redactor-modal-tab" data-title="URL">'
+				+ '<section>'
+					+ '<label>' + 'URL' + '</label>'
+					+ '<input type="url" id="image-url-input" aria-label="' + 'Insert Image by URL' + '" />'
+				+ '</section>'
+				+ '<section>'
+					+ '<button id="redactor-modal-button-action" type="submit">Insert</button>'
+					+ '<button id="redactor-modal-button-cancel">Cancel</button>'
+				+ '</section>'
+			+ '</form>',
 			init: function() {
-                var that = this;
+        var that = this;
 
-                this.$element.on('modalOpenedCallback', $.proxy(this.imageurl.load, this));
+				$.extend(this.opts.modal, {
+					image:this.opts.modal.image + this.imageurl['url-tab']
+				});
+
+				this.core.element().on('modalOpened.callback.redactor', $.proxy(this.imageurl.load, this));
 			},
 			load: function() {
-                var that = this;
-                
-                if(!$('#redactor-modal-image-insert').length) return;
-                
-                that.modal.addTab('image-url', 'Image URL', 'active');
-                
-                $('#redactor-modal-tabber a[rel="tabimage-url"]').click(function(e){
-                    $('#redactor-modal').removeClass('expanded eureka-modal');
-                    $('#eureka-modal-footer').hide();
-                }); 
-                
-                $('#redactor-modal-image-insert').append($(document.createElement('form')).attr('id','insert-image-form').addClass('redactor-tab redactor-tabimage-url').hide().append(
-                    [
-                        $('<label for="image-url" class="redactor-image-link-option">').html('Image URL'),
-                        $('<input type="url" name="image-url" id="image-url-input" placeholder="Absolute URL to Image">'),
-                        $('<footer id="insert-image-footer">').html(
-                            $('<button id="insert-url-btn" type="submit">').addClass('redactor-modal-btn redactor-modal-action-btn').html('Insert')
-                        )
-                    ]
-                ));
-                
-                $('#insert-image-form').submit(function(e){
-                    e.preventDefault();
+				var that = this;
 
-                    that.image.insert({filelink:$('#image-url-input').val()});
-                    that.image.onDrop();
-                    
-    				that.modal.close();
-    				that.selection.restore();
-                });
+				if(!$('#redactor-modal-image-droparea').length) return;
+
+				$('#insert-image-form').submit(function(e){
+						e.preventDefault();
+
+						that.image.insert({url:$('#image-url-input').val()});
+
+						that.modal.close();
+						that.selection.restore();
+				});
 			}
 		};
 	};
 })(jQuery);
+
 if (!RedactorPlugins) var RedactorPlugins = {};
 
 (function($)
