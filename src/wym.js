@@ -1,13 +1,9 @@
-if (!RedactorPlugins) var RedactorPlugins = {};
-
 (function($)
 {
-	RedactorPlugins.wym = function()
-	{
+	$.Redactor.prototype.wym = function() {
 		return {
-			init: function()
-			{
-                this.$editor.addClass('redactor-editor_wym');
+			init: function() {
+        this.core.editor().addClass('redactor-editor_wym');
 			}
 		};
 	};
