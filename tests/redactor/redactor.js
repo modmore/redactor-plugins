@@ -3182,6 +3182,7 @@
 				},
 				callback: function(type, e, data)
 				{
+					console.log(type,e,data);
 					var eventNamespace = 'redactor';
 					var returnValue = false;
 					var events = $._data(this.core.element()[0], 'events');

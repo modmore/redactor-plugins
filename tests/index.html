@@ -8,8 +8,10 @@
 
         <!-- Redactor is here -->
 	    <link rel="stylesheet" href="./redactor/redactor.css" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
 	    <script src="./redactor/redactor.js"></script>
       <script src="../src/imagepx.js"></script>
+      <script src="../src/breadcrumb.js"></script>
       <script src="./redactor/plugins/imperavi/imagemanager.js"></script>
 
       <style type="text/css">
@@ -33,7 +35,7 @@
 	            focus: true,
               imageUpload: '/upload.php',
               imageManagerJson: '/images/images.json',
-              plugins: ['imagemanager','imagepx']
+              plugins: ['imagemanager','imagepx','breadcrumb']
             });
         });
         </script>
