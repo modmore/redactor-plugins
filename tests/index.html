@@ -8,6 +8,13 @@
 
         <!-- Redactor is here -->
 	    <link rel="stylesheet" href="./redactor/redactor.css" />
+
+      <link rel="stylesheet" href="../dist/contrast.min.css" />
+      <link rel="stylesheet" href="../dist/imagepx.min.css" />
+      <link rel="stylesheet" href="../dist/replacer.min.css" />
+      <link rel="stylesheet" href="../dist/wym.min.css" />
+      <link rel="stylesheet" href="../dist/zoom.min.css" />
+
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
 	    <script src="./redactor/redactor.js"></script>
       <script src="../src/imagepx.js"></script>
@@ -22,127 +29,7 @@
       <script src="../src/zoom.js"></script>
       <script src="./redactor/plugins/imperavi/imagemanager.js"></script>
 
-      <style type="text/css">
-        section.dimension::after {
-          clear: both;
-          content: "";
-          display: table;
-        }
-        section.dimension > div {
-          float:left;
-        }
-        section.dimension > div:last-of-type {
-          float:right;
-        }
-      </style>
-      <style type="text/css">
-          .redactor-editor.redactor-editor_contrast {
-              background: rgb(10,10,18);
-              color:rgb(240,240,240);
-          }
-          .redactor-editor.redactor-editor_contrast h1,.redactor-editor.redactor-editor_contrast h2,.redactor-editor.redactor-editor_contrast h3,.redactor-editor.redactor-editor_contrast h4,.redactor-editor.redactor-editor_contrast h5,.redactor-editor.redactor-editor_contrast h6 {
-              color:rgb(253,253,253);
-          }
-          .redactor-editor.redactor-editor_contrast code {
-              background:rgb(60,60,60);
-          }
-      </style>
-
-      <style>
-      #redactor-modal-replacer section > div {
-        padding-bottom:1em;
-      }
-      </style>
-
-      <style type="text/css">
-      /* #52 Ensure floated images stay in their WYM container */
-      .redactor-editor_wym div,
-      .redactor-editor_wym p,
-      .redactor-editor_wym ul,
-      .redactor-editor_wym ol,
-      .redactor-editor_wym table,
-      .redactor-editor_wym dl,
-      .redactor-editor_wym pre,
-      .redactor-editor_wym h1,
-      .redactor-editor_wym h2,
-      .redactor-editor_wym h3,
-      .redactor-editor_wym h4,
-      .redactor-editor_wym h5,
-      .redactor-editor_wym h6,
-      .redactor-editor_wym blockquote {
-        overflow: hidden;
-      }
-
-      .redactor-editor.redactor-editor_wym {
-        padding: 10px 7px 0 7px !important;
-        background: #f6f6f6 !important;
-      }
-      .redactor-editor.redactor-editor_wym div,
-      .redactor-editor.redactor-editor_wym p,
-      .redactor-editor.redactor-editor_wym ul,
-      .redactor-editor.redactor-editor_wym ol,
-      .redactor-editor.redactor-editor_wym table,
-      .redactor-editor.redactor-editor_wym dl,
-      .redactor-editor.redactor-editor_wym pre,
-      .redactor-editor.redactor-editor_wym h1,
-      .redactor-editor.redactor-editor_wym h2,
-      .redactor-editor.redactor-editor_wym h3,
-      .redactor-editor.redactor-editor_wym h4,
-      .redactor-editor.redactor-editor_wym h5,
-      .redactor-editor.redactor-editor_wym h6,
-      .redactor-editor.redactor-editor_wym blockquote {
-        margin-top: 0;
-        margin-bottom: 5px !important;
-        padding: 10px !important;
-        border: 1px solid #e4e4e4 !important;
-        background-color: #fff !important;
-        z-index: 0;
-      }
-      .redactor-editor.redactor-editor_wym blockquote:before {
-        content: '';
-      }
-      .redactor-editor.redactor-editor_wym img {
-        position: relative;
-        z-index: 1;
-      }
-      .redactor-editor.redactor-editor_wym div {
-        border: 1px dotted #aaa !important;
-      }
-      .redactor-editor.redactor-editor_wym pre {
-        border: 2px dashed #e4e4e4 !important;
-        background-color: #f8f8f8 !important;
-      }
-      .redactor-editor.redactor-editor_wym ul,
-      .redactor-editor.redactor-editor_wym ol {
-        padding-left: 2em !important;
-      }
-      .redactor-editor.redactor-editor_wym ul li ul,
-      .redactor-editor.redactor-editor_wym ol li ul,
-      .redactor-editor.redactor-editor_wym ul li ol,
-      .redactor-editor.redactor-editor_wym ol li ol {
-        border: none !important;
-      }
-      </style>
-
-      <style>
-      .redactor-editor[data-zoom="1"] p, .redactor-editor[data-zoom="2"] p, .redactor-editor[data-zoom="3"] p {
-        font-size:0.8em;
-      }
-
-      .redactor-editor[data-zoom="1"] {
-          font-size:2em;
-      }
-
-      .redactor-editor[data-zoom="2"] {
-          font-size:3em;
-      }
-
-      .redactor-editor[data-zoom="3"] {
-          font-size:4.2em;
-      }
-      </style>
-
-        <script type="text/javascript">
+      <script type="text/javascript">
         $(function()
         {
             $('#content').redactor({
@@ -152,7 +39,7 @@
               plugins: ['imagemanager','imagepx','imageurl','breadcrumb','contrast','download','norphan','replacer','speek','wym','zoom']
             });
         });
-        </script>
+      </script>
     </head>
     <body style="margin: 0;">
     	<div style="width: 70%; margin: auto; padding: 50px;">

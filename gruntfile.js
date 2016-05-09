@@ -3,7 +3,8 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         dirs: {
             'dist': './dist/',
-            'src': './src/'
+            'src': './src/',
+						'scss': './scss/'
         },
         concat: {
             options: {
@@ -29,6 +30,22 @@ module.exports = function(grunt) {
                 dest: '<%= dirs.dist %>redactor-plugins.all.js',
             },
         },
+				sass: {
+					plugins: {
+							options: {
+									style: 'compressed',
+									compass: false,
+									sourcemap:'none'
+							},
+							files: {
+									'<%= dirs.dist %>contrast.min.css': '<%= dirs.src %><%= dirs.scss %>contrast.scss',
+									'<%= dirs.dist %>imagepx.min.css': '<%= dirs.src %><%= dirs.scss %>imagepx.scss',
+									'<%= dirs.dist %>replacer.min.css': '<%= dirs.src %><%= dirs.scss %>replacer.scss',
+									'<%= dirs.dist %>wym.min.css': '<%= dirs.src %><%= dirs.scss %>wym.scss',
+									'<%= dirs.dist %>zoom.min.css': '<%= dirs.src %><%= dirs.scss %>zoom.scss'
+							}
+					}
+				},
         uglify: {
             main: {
                 options: {
@@ -128,6 +145,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-growl');
     grunt.loadNpmTasks('grunt-jsvalidate');
+		grunt.loadNpmTasks('grunt-contrib-sass');
 
     grunt.loadNpmTasks('grunt-string-replace');
     grunt.renameTask('string-replace', 'bump');

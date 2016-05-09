@@ -1,0 +1,11 @@
+section.dimension::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+section.dimension > div {
+  float:left;
+}
+section.dimension > div:last-of-type {
+  float:right;
+}
