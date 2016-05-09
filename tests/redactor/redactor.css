@@ -454,19 +454,19 @@
   line-height: 24px;
   font-weight: bold; }
 .redactor-dropdown-box-format .redactor-dropdown-h1 {
-  font-size: 30px;
+  font-size: em(30px);
   line-height: 32px; }
 .redactor-dropdown-box-format .redactor-dropdown-h2 {
-  font-size: 24px;
+  font-size: em(24px);
   line-height: 32px; }
 .redactor-dropdown-box-format .redactor-dropdown-h3 {
-  font-size: 20px; }
+  font-size: em(20px); }
 .redactor-dropdown-box-format .redactor-dropdown-h4 {
-  font-size: 18px; }
+  font-size: em(18px); }
 .redactor-dropdown-box-format .redactor-dropdown-h5 {
-  font-size: 16px; }
+  font-size: em(16px); }
 .redactor-dropdown-box-format .redactor-dropdown-h6 {
-  font-size: 14px;
+  font-size: em(14px);
   text-transform: uppercase;
   letter-spacing: .04em; }
 
@@ -548,7 +548,7 @@
     @media (max-width: 768px) {
       #redactor-modal #redactor-modal-body {
         padding: 24px; } }
-  #redactor-modal select, #redactor-modal input[type="text"], #redactor-modal input[type="number"], #redactor-modal input[type="password"], #redactor-modal input[type="email"], #redactor-modal input[type="url"], #redactor-modal textarea {
+  #redactor-modal select, #redactor-modal input[type="text"], #redactor-modal input[type="password"], #redactor-modal input[type="email"], #redactor-modal input[type="url"], #redactor-modal textarea {
     box-sizing: border-box;
     position: relative;
     z-index: 2;
@@ -675,7 +675,7 @@
 
 .redactor-editor {
   font-family: Arial, "Helvetica Neue", Helvetica, Tahoma, sans-serif;
-  font-size: 15px;
+  font-size: em(15px);
   line-height: 24px;
   color: #222; }
   .redactor-editor[dir="rtl"] {
@@ -723,22 +723,22 @@
   .redactor-editor h4 {
     margin-left: -1px; }
   .redactor-editor h1 {
-    font-size: 30px;
+    font-size: em(30px);
     line-height: 40px; }
   .redactor-editor h2 {
-    font-size: 24px;
+    font-size: em(24px);
     line-height: 32px; }
   .redactor-editor h3 {
-    font-size: 20px;
+    font-size: em(20px);
     line-height: 24px; }
   .redactor-editor h4 {
-    font-size: 18px;
+    font-size: em(18px);
     line-height: 24px; }
   .redactor-editor h5 {
-    font-size: 16px;
+    font-size: em(16px);
     line-height: 24px; }
   .redactor-editor h6 {
-    font-size: 14px;
+    font-size: em(14px);
     line-height: 24px;
     text-transform: uppercase; }
   .redactor-editor p,
