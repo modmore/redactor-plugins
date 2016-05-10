@@ -4,8 +4,6 @@
         <title>Redactor</title>
         <meta charset="utf-8">
 
-        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-
         <!-- Redactor is here -->
 	    <link rel="stylesheet" href="./redactor/redactor.css" />
 
@@ -16,6 +14,10 @@
       <link rel="stylesheet" href="../dist/zoom.min.css" />
 
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+
+      <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script>try {ace} catch(e) { document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"><\/script>') }</script>
+
 	    <script src="./redactor/redactor.js"></script>
       <script src="../src/imagepx.js"></script>
       <script src="../src/breadcrumb.js"></script>
@@ -27,7 +29,9 @@
       <script src="../src/speek.js"></script>
       <script src="../src/wym.js"></script>
       <script src="../src/zoom.js"></script>
+      <script src="../src/syntax.js"></script>
       <script src="./redactor/plugins/imperavi/imagemanager.js"></script>
+      <script src="./redactor/plugins/imperavi/source.js"></script>
 
       <script type="text/javascript">
         $(function()
@@ -36,7 +40,7 @@
 	            focus: true,
               imageUpload: '/upload.php',
               imageManagerJson: '/images/images.json',
-              plugins: ['imagemanager','imagepx','imageurl','breadcrumb','contrast','download','norphan','replacer','speek','wym','zoom']
+              plugins: ['imagemanager','imagepx','imageurl','breadcrumb','contrast','download','norphan','replacer','speek','wym','zoom','syntax','source']
             });
         });
       </script>
