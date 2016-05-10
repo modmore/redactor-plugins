@@ -451,6 +451,7 @@
 		return {
       offlineMode:false,
       editor:null,
+      editorDOM:null,
       prettyContent:null,
 			init: function() {
         var that = this;
@@ -463,7 +464,9 @@
           aceTabSize:4,
           aceUseWrapMode:true,
           aceHighlightActiveLine:true,
-          aceReadOnly:false
+          aceReadOnly:false,
+          aceTheme:"ace/theme/chrome",
+          aceMode:"ace/mode/html"
         }, this.opts);
 
         if(typeof ace === 'undefined') {
@@ -481,8 +484,9 @@
 
         that.$textarea.after('<div class="redactor__modx-code-pretty-content" rows="4" style="display:none"></div>'); // not fun to have to do this http://stackoverflow.com/questions/6440439/how-do-i-make-a-textarea-an-ace-editor#comment9444773_7478430
         that.syntax.prettyContent = that.$textarea.parent().children('div.redactor__modx-code-pretty-content').attr('id','redactor__modx-code-pretty-content' + that.uuid);
+        that.syntax.editorDOM = $(document.getElementById(('redactor__modx-code-pretty-content' + that.uuid)));
 
-        if(that.opts.aceOfflineSource) {
+        if(that.syntax.offlineMode && that.opts.aceOfflineSource) {
             ace.config.set("modePath",that.opts.assetsUrl + 'lib/ace/');
             ace.config.set("workerPath",that.opts.assetsUrl + 'lib/ace/');
             ace.config.set("themePath",that.opts.assetsUrl + 'lib/ace/');
@@ -491,9 +495,9 @@
         that.syntax.editor = ace.edit('redactor__modx-code-pretty-content' + that.uuid);
         var editor = that.syntax.editor;
 
-        editor.setTheme(that.opts.aceTheme || "ace/theme/chrome");
-        editor.getSession().setMode(that.opts.aceMode || "ace/mode/html");
-        editor.getSession().setUseWorker(that.opts.useWorkers || false);
+        editor.setTheme(that.opts.aceTheme);
+        editor.getSession().setMode(that.opts.aceMode);
+        editor.getSession().setUseWorker((that.opts.useWorkers === undefined) ? that.opts.useWorkers : false);
         editor.setValue(textarea.val()); //that.tabifier.get(that.$textarea.val())
         if(that.opts.aceUseSoftTabs !== undefined) editor.getSession().setUseSoftTabs(that.opts.aceUseSoftTabs);
         if(that.opts.aceTabSize !== undefined && parseInt(that.opts.aceTabSize)) editor.getSession().setTabSize(parseInt(that.opts.aceTabSize));
@@ -507,7 +511,7 @@
             that.source.$textarea.val(editor.getValue());
         });
 
-        if(that.opts.aceFontSize !== undefined) editorDOM.css({fontSize:that.opts.aceFontSize});
+        if(that.opts.aceFontSize !== undefined) that.syntax.editorDOM.css({fontSize:that.opts.aceFontSize});
         that.opts.aceLoaded = true;
       },
 			sourceCallback: function(e,data){
@@ -523,9 +527,8 @@
           that.syntax.prettyContent.show().height(_h);
           editor.resize();
         } else {
-          var editorDOM = $(document.getElementById(('redactor__modx-code-pretty-content' + that.uuid)));
           that.insert.set(editor.getValue(), false);
-          editorDOM.hide();
+          that.syntax.editorDOM.hide();
         }
 
 			}
