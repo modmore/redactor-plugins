@@ -16,7 +16,9 @@
           aceTabSize:4,
           aceUseWrapMode:true,
           aceHighlightActiveLine:true,
-          aceReadOnly:false
+          aceReadOnly:false,
+          aceTheme:"ace/theme/chrome",
+          aceMode:"ace/mode/html"
         }, this.opts);
 
         if(typeof ace === 'undefined') {
@@ -44,9 +46,9 @@
         that.syntax.editor = ace.edit('redactor__modx-code-pretty-content' + that.uuid);
         var editor = that.syntax.editor;
 
-        editor.setTheme(that.opts.aceTheme || "ace/theme/chrome");
-        editor.getSession().setMode(that.opts.aceMode || "ace/mode/html");
-        editor.getSession().setUseWorker(that.opts.useWorkers || false);
+        editor.setTheme(that.opts.aceTheme);
+        editor.getSession().setMode(that.opts.aceMode);
+        editor.getSession().setUseWorker((that.opts.useWorkers === undefined) ? that.opts.useWorkers : false);
         editor.setValue(textarea.val()); //that.tabifier.get(that.$textarea.val())
         if(that.opts.aceUseSoftTabs !== undefined) editor.getSession().setUseSoftTabs(that.opts.aceUseSoftTabs);
         if(that.opts.aceTabSize !== undefined && parseInt(that.opts.aceTabSize)) editor.getSession().setTabSize(parseInt(that.opts.aceTabSize));
