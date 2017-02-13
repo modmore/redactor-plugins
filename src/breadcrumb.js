@@ -17,12 +17,12 @@
 				var current = this.selection.current(),
 				cloned = $(current).clone(),
 				_el = cloned.find('*[data-verified="redactor"]'),
-				_editor = cloned.closest('div.redactor-editor'),
+				_editor = cloned.closest('div.redactor-layer'),
 				_crumbs = [];
 
-				if (!$(current).parent().is('div.redactor-editor')) {
+				if (!$(current).parent().is('div.redactor-layer')) {
 						var t = $(current);
-						while ($(t)[0] && t.parent() !== undefined && !t.is('div.redactor-editor')) {
+						while ($(t)[0] && t.parent() !== undefined && !t.is('div.redactor-layer')) {
 								_crumbs.push($(t)[0].tagName);
 								t = t.parent();
 						}

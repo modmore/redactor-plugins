@@ -3,7 +3,7 @@
 	$.Redactor.prototype.wym = function() {
 		return {
 			init: function() {
-        this.core.editor().addClass('redactor-editor_wym');
+        this.core.editor().addClass('redactor-layer_wym');
 			}
 		};
 	};

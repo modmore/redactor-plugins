@@ -1195,7 +1195,7 @@
 
 					// place
 					this.$box.insertAfter(this.$element).append(this.$editor).append(this.$element);
-					this.$editor.addClass('redactor-editor');
+					this.$editor.addClass('redactor-layer');
 					this.$element.hide();
 
 					this.$box.prepend('<span class="redactor-voice-label" id="redactor-voice-' + this.uuid +'" aria-hidden="false">' + this.lang.get('accessibility-help-label') + '</span>');
@@ -3281,7 +3281,7 @@
 					this.$element.removeClass('redactor-click-to-edit');
 
 					// common
-					this.core.editor().removeClass('redactor-editor');
+					this.core.editor().removeClass('redactor-layer');
 					this.core.editor().removeAttr('contenteditable');
 
 					var html = this.code.get();

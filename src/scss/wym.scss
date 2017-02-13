@@ -1,39 +1,39 @@
 /* #52 Ensure floated images stay in their WYM container */
-.redactor-editor_wym div,
-.redactor-editor_wym p,
-.redactor-editor_wym ul,
-.redactor-editor_wym ol,
-.redactor-editor_wym table,
-.redactor-editor_wym dl,
-.redactor-editor_wym pre,
-.redactor-editor_wym h1,
-.redactor-editor_wym h2,
-.redactor-editor_wym h3,
-.redactor-editor_wym h4,
-.redactor-editor_wym h5,
-.redactor-editor_wym h6,
-.redactor-editor_wym blockquote {
+.redactor-layer_wym div,
+.redactor-layer_wym p,
+.redactor-layer_wym ul,
+.redactor-layer_wym ol,
+.redactor-layer_wym table,
+.redactor-layer_wym dl,
+.redactor-layer_wym pre,
+.redactor-layer_wym h1,
+.redactor-layer_wym h2,
+.redactor-layer_wym h3,
+.redactor-layer_wym h4,
+.redactor-layer_wym h5,
+.redactor-layer_wym h6,
+.redactor-layer_wym blockquote {
   overflow: hidden;
 }
 
-.redactor-editor.redactor-editor_wym {
+.redactor-layer.redactor-layer_wym {
   padding: 10px 7px 0 7px !important;
   background: #f6f6f6 !important;
 }
-.redactor-editor.redactor-editor_wym div,
-.redactor-editor.redactor-editor_wym p,
-.redactor-editor.redactor-editor_wym ul,
-.redactor-editor.redactor-editor_wym ol,
-.redactor-editor.redactor-editor_wym table,
-.redactor-editor.redactor-editor_wym dl,
-.redactor-editor.redactor-editor_wym pre,
-.redactor-editor.redactor-editor_wym h1,
-.redactor-editor.redactor-editor_wym h2,
-.redactor-editor.redactor-editor_wym h3,
-.redactor-editor.redactor-editor_wym h4,
-.redactor-editor.redactor-editor_wym h5,
-.redactor-editor.redactor-editor_wym h6,
-.redactor-editor.redactor-editor_wym blockquote {
+.redactor-layer.redactor-layer_wym div,
+.redactor-layer.redactor-layer_wym p,
+.redactor-layer.redactor-layer_wym ul,
+.redactor-layer.redactor-layer_wym ol,
+.redactor-layer.redactor-layer_wym table,
+.redactor-layer.redactor-layer_wym dl,
+.redactor-layer.redactor-layer_wym pre,
+.redactor-layer.redactor-layer_wym h1,
+.redactor-layer.redactor-layer_wym h2,
+.redactor-layer.redactor-layer_wym h3,
+.redactor-layer.redactor-layer_wym h4,
+.redactor-layer.redactor-layer_wym h5,
+.redactor-layer.redactor-layer_wym h6,
+.redactor-layer.redactor-layer_wym blockquote {
   margin-top: 0;
   margin-bottom: 5px !important;
   padding: 10px !important;
@@ -41,27 +41,27 @@
   background-color: #fff !important;
   z-index: 0;
 }
-.redactor-editor.redactor-editor_wym blockquote:before {
+.redactor-layer.redactor-layer_wym blockquote:before {
   content: '';
 }
-.redactor-editor.redactor-editor_wym img {
+.redactor-layer.redactor-layer_wym img {
   position: relative;
   z-index: 1;
 }
-.redactor-editor.redactor-editor_wym div {
+.redactor-layer.redactor-layer_wym div {
   border: 1px dotted #aaa !important;
 }
-.redactor-editor.redactor-editor_wym pre {
+.redactor-layer.redactor-layer_wym pre {
   border: 2px dashed #e4e4e4 !important;
   background-color: #f8f8f8 !important;
 }
-.redactor-editor.redactor-editor_wym ul,
-.redactor-editor.redactor-editor_wym ol {
+.redactor-layer.redactor-layer_wym ul,
+.redactor-layer.redactor-layer_wym ol {
   padding-left: 2em !important;
 }
-.redactor-editor.redactor-editor_wym ul li ul,
-.redactor-editor.redactor-editor_wym ol li ul,
-.redactor-editor.redactor-editor_wym ul li ol,
-.redactor-editor.redactor-editor_wym ol li ol {
+.redactor-layer.redactor-layer_wym ul li ul,
+.redactor-layer.redactor-layer_wym ol li ul,
+.redactor-layer.redactor-layer_wym ul li ol,
+.redactor-layer.redactor-layer_wym ol li ol {
   border: none !important;
 }

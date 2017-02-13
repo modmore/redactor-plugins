@@ -10,11 +10,11 @@
   position: relative;
   overflow: visible; }
 
-.redactor-editor,
+.redactor-layer,
 .redactor-box {
   background: #fff; }
 
-.redactor-editor,
+.redactor-layer,
 .redactor-box,
 .redactor-box textarea {
   z-index: auto; }
@@ -55,7 +55,7 @@
   color: rgba(0, 0, 0, 0.3);
   font-weight: normal !important; }
 
-.redactor-editor {
+.redactor-layer {
   position: relative;
   overflow: auto;
   margin: 0;
@@ -70,7 +70,7 @@
 .redactor-in {
   cursor: text; }
 
-.redactor-editor:focus,
+.redactor-layer:focus,
 .redactor-in:focus {
   outline: none; }
 
@@ -84,7 +84,7 @@
 .redactor-script-tag {
   display: none; }
 
-.redactor-editor img {
+.redactor-layer img {
   cursor: pointer; }
 
 .redactor-voice-label {
@@ -673,175 +673,175 @@
     #redactor-modal-list a:hover {
       background-color: #eee; }
 
-.redactor-editor {
+.redactor-layer {
   font-family: Arial, "Helvetica Neue", Helvetica, Tahoma, sans-serif;
   font-size: em(15px);
   line-height: 24px;
   color: #222; }
-  .redactor-editor[dir="rtl"] {
+  .redactor-layer[dir="rtl"] {
     direction: rtl;
     unicode-bidi: embed; }
-    .redactor-editor[dir="rtl"] ul li, .redactor-editor[dir="rtl"] ol li {
+    .redactor-layer[dir="rtl"] ul li, .redactor-layer[dir="rtl"] ol li {
       text-align: right; }
-    .redactor-editor[dir="rtl"] ul,
-    .redactor-editor[dir="rtl"] ol,
-    .redactor-editor[dir="rtl"] ul ul,
-    .redactor-editor[dir="rtl"] ol ol,
-    .redactor-editor[dir="rtl"] ul ol,
-    .redactor-editor[dir="rtl"] ol ul {
+    .redactor-layer[dir="rtl"] ul,
+    .redactor-layer[dir="rtl"] ol,
+    .redactor-layer[dir="rtl"] ul ul,
+    .redactor-layer[dir="rtl"] ol ol,
+    .redactor-layer[dir="rtl"] ul ol,
+    .redactor-layer[dir="rtl"] ol ul {
       margin: 0 24px 0 0; }
   @media (max-width: 768px) {
-    .redactor-editor {
+    .redactor-layer {
       font-size: 16px; } }
-  .redactor-editor a {
+  .redactor-layer a {
     color: #256bc9; }
-    .redactor-editor a:focus, .redactor-editor a:hover {
+    .redactor-layer a:focus, .redactor-layer a:hover {
       color: #e21e3b; }
-  .redactor-editor h1,
-  .redactor-editor h2,
-  .redactor-editor h3,
-  .redactor-editor h4,
-  .redactor-editor h5,
-  .redactor-editor h6 {
+  .redactor-layer h1,
+  .redactor-layer h2,
+  .redactor-layer h3,
+  .redactor-layer h4,
+  .redactor-layer h5,
+  .redactor-layer h6 {
     font-family: Arial, "Helvetica Neue", Helvetica, Tahoma, sans-serif;
     font-weight: bold;
     color: #000;
     text-rendering: optimizeLegibility;
     margin: 0;
     padding: 0; }
-  .redactor-editor h1 {
+  .redactor-layer h1 {
     margin-bottom: 16px; }
-  .redactor-editor h2,
-  .redactor-editor h3,
-  .redactor-editor h4,
-  .redactor-editor h5,
-  .redactor-editor h6 {
+  .redactor-layer h2,
+  .redactor-layer h3,
+  .redactor-layer h4,
+  .redactor-layer h5,
+  .redactor-layer h6 {
     margin-bottom: 8px; }
-  .redactor-editor h1,
-  .redactor-editor h2,
-  .redactor-editor h3,
-  .redactor-editor h4 {
+  .redactor-layer h1,
+  .redactor-layer h2,
+  .redactor-layer h3,
+  .redactor-layer h4 {
     margin-left: -1px; }
-  .redactor-editor h1 {
+  .redactor-layer h1 {
     font-size: em(30px);
     line-height: 40px; }
-  .redactor-editor h2 {
+  .redactor-layer h2 {
     font-size: em(24px);
     line-height: 32px; }
-  .redactor-editor h3 {
+  .redactor-layer h3 {
     font-size: em(20px);
     line-height: 24px; }
-  .redactor-editor h4 {
+  .redactor-layer h4 {
     font-size: em(18px);
     line-height: 24px; }
-  .redactor-editor h5 {
+  .redactor-layer h5 {
     font-size: em(16px);
     line-height: 24px; }
-  .redactor-editor h6 {
+  .redactor-layer h6 {
     font-size: em(14px);
     line-height: 24px;
     text-transform: uppercase; }
-  .redactor-editor p,
-  .redactor-editor ul,
-  .redactor-editor ol,
-  .redactor-editor dl,
-  .redactor-editor blockquote,
-  .redactor-editor hr,
-  .redactor-editor pre,
-  .redactor-editor table,
-  .redactor-editor figure,
-  .redactor-editor address {
+  .redactor-layer p,
+  .redactor-layer ul,
+  .redactor-layer ol,
+  .redactor-layer dl,
+  .redactor-layer blockquote,
+  .redactor-layer hr,
+  .redactor-layer pre,
+  .redactor-layer table,
+  .redactor-layer figure,
+  .redactor-layer address {
     padding: 0;
     margin: 0; }
-  .redactor-editor ul,
-  .redactor-editor ol,
-  .redactor-editor ul ul,
-  .redactor-editor ol ol,
-  .redactor-editor ul ol,
-  .redactor-editor ol ul {
+  .redactor-layer ul,
+  .redactor-layer ol,
+  .redactor-layer ul ul,
+  .redactor-layer ol ol,
+  .redactor-layer ul ol,
+  .redactor-layer ol ul {
     margin: 0 0 0 24px; }
-  .redactor-editor ul li,
-  .redactor-editor ol li {
+  .redactor-layer ul li,
+  .redactor-layer ol li {
     text-align: left; }
-  .redactor-editor ol ol li {
+  .redactor-layer ol ol li {
     list-style-type: lower-alpha; }
-  .redactor-editor ol ol ol li {
+  .redactor-layer ol ol ol li {
     list-style-type: lower-roman; }
-  .redactor-editor p,
-  .redactor-editor ul,
-  .redactor-editor ol,
-  .redactor-editor dl,
-  .redactor-editor blockquote,
-  .redactor-editor hr,
-  .redactor-editor pre,
-  .redactor-editor table,
-  .redactor-editor figure,
-  .redactor-editor address {
+  .redactor-layer p,
+  .redactor-layer ul,
+  .redactor-layer ol,
+  .redactor-layer dl,
+  .redactor-layer blockquote,
+  .redactor-layer hr,
+  .redactor-layer pre,
+  .redactor-layer table,
+  .redactor-layer figure,
+  .redactor-layer address {
     margin-bottom: 16px; }
-  .redactor-editor blockquote {
+  .redactor-layer blockquote {
     position: relative;
     font-style: italic;
     color: rgba(0, 0, 0, 0.6); }
-    .redactor-editor blockquote cite {
+    .redactor-layer blockquote cite {
       font-size: 80%; }
   @media (min-width: 768px) {
-    .redactor-editor blockquote {
+    .redactor-layer blockquote {
       padding-left: 24px;
       border-left: 1px solid rgba(0, 0, 0, 0.1); } }
-  .redactor-editor address {
+  .redactor-layer address {
     font-style: normal; }
-  .redactor-editor dl dt {
+  .redactor-layer dl dt {
     font-weight: bold; }
-  .redactor-editor dd {
+  .redactor-layer dd {
     margin-left: 24px; }
-  .redactor-editor cite {
+  .redactor-layer cite {
     color: rgba(0, 0, 0, 0.5);
     font-style: italic; }
-  .redactor-editor s,
-  .redactor-editor del {
+  .redactor-layer s,
+  .redactor-layer del {
     text-decoration: line-through; }
-  .redactor-editor abbr[title],
-  .redactor-editor dfn[title] {
+  .redactor-layer abbr[title],
+  .redactor-layer dfn[title] {
     border-bottom: 1px dotted #000;
     cursor: help; }
-  .redactor-editor strong,
-  .redactor-editor b {
+  .redactor-layer strong,
+  .redactor-layer b {
     font-weight: bold; }
-  .redactor-editor em,
-  .redactor-editor i {
+  .redactor-layer em,
+  .redactor-layer i {
     font-style: italic; }
-  .redactor-editor sub,
-  .redactor-editor sup {
+  .redactor-layer sub,
+  .redactor-layer sup {
     font-size: 10px;
     line-height: 0;
     position: relative;
     margin-left: .2rem; }
-  .redactor-editor sup {
+  .redactor-layer sup {
     top: -.4rem; }
-  .redactor-editor sub {
+  .redactor-layer sub {
     bottom: -.2rem; }
-  .redactor-editor figcaption {
+  .redactor-layer figcaption {
     margin: .3rem 0;
     font-size: 11px;
     font-style: italic;
     text-align: left; }
-  .redactor-editor ins,
-  .redactor-editor u {
+  .redactor-layer ins,
+  .redactor-layer u {
     text-decoration: underline; }
-  .redactor-editor mark {
+  .redactor-layer mark {
     background-color: #ffd61e;
     color: #000;
     text-decoration: none; }
-  .redactor-editor pre,
-  .redactor-editor code,
-  .redactor-editor kbd,
-  .redactor-editor samp,
-  .redactor-editor var,
-  .redactor-editor output {
+  .redactor-layer pre,
+  .redactor-layer code,
+  .redactor-layer kbd,
+  .redactor-layer samp,
+  .redactor-layer var,
+  .redactor-layer output {
     font-size: 90%;
     font-style: normal;
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace; }
-  .redactor-editor pre {
+  .redactor-layer pre {
     margin-top: 16px;
     font-size: 90%;
     line-height: 24px;
@@ -850,80 +850,80 @@
     background: rgba(0, 0, 0, 0.03);
     padding: 24px;
     word-wrap: normal; }
-  .redactor-editor mark,
-  .redactor-editor code,
-  .redactor-editor samp,
-  .redactor-editor kbd {
+  .redactor-layer mark,
+  .redactor-layer code,
+  .redactor-layer samp,
+  .redactor-layer kbd {
     padding: .2rem .4rem;
     display: inline-block;
     line-height: 1;
     border-radius: 4px; }
-  .redactor-editor code {
+  .redactor-layer code {
     background: rgba(0, 0, 0, 0.05); }
-  .redactor-editor pre code {
+  .redactor-layer pre code {
     font-size: 100%;
     border: none;
     padding: 0;
     background: none;
     line-height: 24px; }
-  .redactor-editor var {
+  .redactor-layer var {
     color: rgba(0, 0, 0, 0.5); }
-  .redactor-editor samp {
+  .redactor-layer samp {
     background: #46a9fc;
     color: rgba(255, 255, 255, 0.9); }
-  .redactor-editor kbd {
+  .redactor-layer kbd {
     background: #000;
     color: rgba(255, 255, 255, 0.85);
     white-space: nowrap; }
-  .redactor-editor figure {
+  .redactor-layer figure {
     text-align: center; }
-  .redactor-editor hr {
+  .redactor-layer hr {
     display: block;
     box-sizing: content-box;
     height: 1px;
     border: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1); }
-  .redactor-editor img,
-  .redactor-editor video,
-  .redactor-editor audio,
-  .redactor-editor embed,
-  .redactor-editor object {
+  .redactor-layer img,
+  .redactor-layer video,
+  .redactor-layer audio,
+  .redactor-layer embed,
+  .redactor-layer object {
     max-width: 100%; }
-  .redactor-editor img,
-  .redactor-editor video,
-  .redactor-editor embed,
-  .redactor-editor object {
+  .redactor-layer img,
+  .redactor-layer video,
+  .redactor-layer embed,
+  .redactor-layer object {
     height: auto; }
-  .redactor-editor embed,
-  .redactor-editor object {
+  .redactor-layer embed,
+  .redactor-layer object {
     height: 100%; }
-  .redactor-editor img {
+  .redactor-layer img {
     vertical-align: middle;
     -ms-interpolation-mode: bicubic; }
-  .redactor-editor table {
+  .redactor-layer table {
     border-collapse: collapse;
     max-width: 100%;
     width: 100%;
     empty-cells: show; }
-    .redactor-editor table caption {
+    .redactor-layer table caption {
       text-transform: uppercase;
       padding: 0;
       color: rgba(0, 0, 0, 0.5);
       font-size: 11px; }
-    .redactor-editor table th,
-    .redactor-editor table td {
+    .redactor-layer table th,
+    .redactor-layer table td {
       border: 1px solid #eee;
       padding: 16px;
       padding-bottom: 15px; }
-    .redactor-editor table tfoot th,
-    .redactor-editor table tfoot td {
+    .redactor-layer table tfoot th,
+    .redactor-layer table tfoot td {
       color: rgba(0, 0, 0, 0.5); }
-  .redactor-editor .video-container {
+  .redactor-layer .video-container {
     height: 0;
     padding-bottom: 56.25%;
     position: relative;
     margin-bottom: 16px; }
-    .redactor-editor .video-container iframe, .redactor-editor .video-container object, .redactor-editor .video-container embed {
+    .redactor-layer .video-container iframe, .redactor-layer .video-container object, .redactor-layer .video-container embed {
       position: absolute;
       top: 0;
       left: 0;

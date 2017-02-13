@@ -10,7 +10,7 @@
 			},
 			toggle: function() {
 					console.log('contrast toggle');
-					 this.core.editor().toggleClass('redactor-editor_contrast');
+					 this.core.editor().toggleClass('redactor-layer_contrast');
 			}
 		};
 	};
