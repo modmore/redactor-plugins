@@ -482,7 +482,7 @@
         var that = this,
         textarea = that.$textarea;
 
-        that.$textarea.after('<div class="redactor__modx-code-pretty-content" rows="4" style="display:none"></div>'); // not fun to have to do this http://stackoverflow.com/questions/6440439/how-do-i-make-a-textarea-an-ace-editor#comment9444773_7478430
+        that.$textarea.after('<div hidden="true" class="redactor__modx-code-pretty-content" rows="4" style="display:none"></div>'); // not fun to have to do this http://stackoverflow.com/questions/6440439/how-do-i-make-a-textarea-an-ace-editor#comment9444773_7478430
         that.syntax.prettyContent = that.$textarea.parent().children('div.redactor__modx-code-pretty-content').attr('id','redactor__modx-code-pretty-content' + that.uuid);
         that.syntax.editorDOM = $(document.getElementById(('redactor__modx-code-pretty-content' + that.uuid)));
 
@@ -505,7 +505,9 @@
         if(that.opts.aceHighlightActiveLine !== undefined) editor.setHighlightActiveLine(that.opts.aceHighlightActiveLine);
         if(that.opts.aceReadOnly !== undefined) editor.setReadOnly(that.opts.aceReadOnly);
 
-        this.core.editor().on('sourceToggle', $.proxy(this.syntax.sourceCallback, this));
+        //this.core.editor().on('sourceToggle', $.proxy(this.syntax.sourceCallback, this));
+        var button = that.button.get('html');
+        that.button.addCallback(button, that.syntax.sourceCallback);
 
         editor.on('change',function(e){
             that.source.$textarea.val(editor.getValue());
@@ -518,17 +520,19 @@
         var that = this,
         editor = that.syntax.editor;
 
-        if(data.sourceMode) {
+        var hiddenAttr = that.syntax.editorDOM.attr('hidden');
+        if(typeof hiddenAttr !== typeof undefined && hiddenAttr !== false) {
           var _h = that.source.$textarea.height();
 
           that.source.$textarea.hide();
 
           editor.setValue(that.source.$textarea.val());
-          that.syntax.prettyContent.show().height(_h);
+          that.syntax.prettyContent.removeAttr('hidden').show().height(_h);
           editor.resize();
         } else {
           that.insert.set(editor.getValue(), false);
           that.syntax.editorDOM.hide();
+          that.syntax.prettyContent.attr('hidden','true');
         }
 
 			}
