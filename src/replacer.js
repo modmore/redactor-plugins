@@ -27,12 +27,12 @@ if (!RedactorPlugins) var RedactorPlugins = {};
 				+ '</section>';
 			},
 			init: function()
-			{                
+			{
                 //var button = this.button.add('replacer', 'replacer');
-                
+
                 //this.button.setAwesome('replacer', 'icon icon-eye');
                 //this.button.addCallback(button, this.replacer.show);
-                                
+
                 $.extend(this.opts.shortcuts, {
                     'ctrl+f': {func:'replacer.show',params:[]}
                 });
@@ -46,12 +46,12 @@ if (!RedactorPlugins) var RedactorPlugins = {};
 
 				var button = this.modal.createActionButton('Replace');
 				button.on('click', this.replacer.replace);
- 
+
                 if(this.sel && this.sel.toString()) {
                     $('#redactor-replacer-find').val(this.sel.toString());
                     $('#redactor-replacer-replace').focus();
                 }
-                
+
 				this.selection.save();
 				this.modal.show();
 
@@ -61,14 +61,18 @@ if (!RedactorPlugins) var RedactorPlugins = {};
                 var _f = $('#redactor-replacer-find').val();
                 var _r = $('#redactor-replacer-replace').val();
                 var _i = $('#redactor-replacer-ignore-case').is( ":checked" );
-                
+
                 if(_f && _r) this.insert.set(replaceAll(_f,_r,this.$editor.html(),'g' + ((_i) ? 'i' : '')));
-                
+
 				this.modal.close();
 				this.selection.restore();
-                
+
                 function replaceAll(find, replace, str, flags) {
-                  return str.replace((find instanceof RegExp) ? find : new RegExp(find, flags), replace);
+                  return str.replace((find instanceof RegExp) ? find : new RegExp(escapeRegExp(find), flags), replace);
+                }
+
+                function escapeRegExp(str) {
+                  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
                 }
             }
 		};
