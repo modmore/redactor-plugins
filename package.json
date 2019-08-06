@@ -1,7 +1,7 @@
 {
   "name": "modmore-redactor-plugins",
   "title": "Redactor Plugins by modmore",
-  "version": "1.1.3",
+  "version": "1.2.0",
   "release": "pl",
   "author": "modmore<contact@modmore.com>",
   "description": "Redactor.js plugins by modmore.",
@@ -23,7 +23,7 @@
     "type": "git",
     "url": "https://github.com/modmore/redactor-plugins.git"
   },
-  "license": "OEM",
+  "license": "MIT",
   "engines": {
     "node": ">=0.10"
   },
