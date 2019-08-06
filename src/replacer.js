@@ -15,10 +15,10 @@ if (!RedactorPlugins) var RedactorPlugins = {};
 					+ '<label for="redactor-replacer-replace">' + 'Replace' + '</label>'
 					+ '<input type="text" size="5" id="redactor-replacer-replace" required />'
                     + '<div class="options">'
-                        + '<div class="ignore-case">'
-        					+ '<label for="redactor-replacer-ignore-case">' + 'Ignore Case' + '</label>'
-        					+ '<input type="checkbox" id="redactor-replacer-ignore-case" />'
-                        + '</div>'
+						+ '<label>'
+							+ '<input type="checkbox" id="redactor-replacer-ignore-case" />'
+							+ ' Ignore Case'
+						+ '</label>'
                         //+ '<div class="replace-all">'
         				//	+ '<label>' + 'Replace All' + '</label>'
         				//	+ '<input type="checkbox" id="redactor-replacer-replace-all" checked disabled readonly />'
@@ -28,10 +28,11 @@ if (!RedactorPlugins) var RedactorPlugins = {};
 			},
 			init: function()
 			{
-                //var button = this.button.add('replacer', 'replacer');
-
-                //this.button.setAwesome('replacer', 'icon icon-eye');
-                //this.button.addCallback(button, this.replacer.show);
+				if (this.opts.replacerButton) {
+					var button = this.button.add('replacer', 'Find & Replace');
+					this.button.setAwesome('replacer', 'icon icon-search');
+					this.button.addCallback(button, this.replacer.show);
+				}
 
                 $.extend(this.opts.shortcuts, {
                     'ctrl+f': {func:'replacer.show',params:[]}

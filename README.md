@@ -73,6 +73,8 @@ Attempts to prevent orphans by replacing the last space between words of block e
 
 Use CTRL+F to trigger a simple Find and Replace&nbsp;tool.
 
+Set `replacerButton` to true to add a button to the toolbar.
+
 ### speek
 In supported browsers, adds a toolbar button which reads editor content&nbsp;aloud.
 
